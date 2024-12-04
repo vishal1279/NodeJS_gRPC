@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: grpc-service-deployment
+spec:
+  replicas: 2  # Number of replicas (pods) to run
+  selector:
+    matchLabels:
+      app: grpc-service
+  template:
+    metadata:
+      labels:
+        app: grpc-service
+    spec:
+      containers:
+      - name: grpc-service
+        image: vishal0991/todo-app:1
+        ports:
+        - containerPort: 50051
